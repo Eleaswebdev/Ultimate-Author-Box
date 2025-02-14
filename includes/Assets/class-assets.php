@@ -4,6 +4,7 @@ class UAB_Assets {
     public function __construct() {
         add_action('admin_enqueue_scripts', array($this, 'load_assets'));
         add_action('wp_enqueue_scripts', array($this, 'load_frontend_assets'));
+        add_action('wp_enqueue_scripts', array($this, 'load_dynamic_css'));
     }
 
     // Load JavaScript & CSS
@@ -19,5 +20,20 @@ class UAB_Assets {
 
         wp_enqueue_style('ultimate-author-box', UAB_PLUGIN_URL . '/assets/css/style.css');
 
+    }
+
+    public function load_dynamic_css() {
+        $options = get_option('uab_settings', []);
+        $bg_color = isset($options['background_color']) ? 'background-color:' . esc_attr($options['background_color']) . ';' : '#f9f9f9';
+        $border_color = isset($options['border_color']) ? 'border: 1px solid ' . esc_attr($options['border_color']) . ';' : '#ccc';
+
+        $dynamic_css = "
+        .uab-author-box {
+            {$bg_color}
+            {$border_color}
+        }
+        ";
+
+        wp_add_inline_style( 'ultimate-author-box', $dynamic_css );
     }
 }

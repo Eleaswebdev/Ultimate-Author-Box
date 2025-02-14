@@ -24,7 +24,7 @@ class UAB_Author_Box {
         $paragraph_number = isset($settings['paragraph_number']) ? intval($settings['paragraph_number']) : 2;
 
         // Start author box
-        $author_box = '<div class="uab-author-box uab-position-' . esc_attr($position) . '" style="background:' . $bg_color . '; border:1px solid ' . $border_color . ';">';
+        $author_box = '<div class="uab-author-box uab-position-' . esc_attr($position) . '">';
 
         // Adjust position layout
         if ($position === 'inline') {
