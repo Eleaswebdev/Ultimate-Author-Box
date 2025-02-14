@@ -1,0 +1,38 @@
+.uab-author-box {
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.uab-avatar img {
+    border-radius: 50%;
+}
+
+.uab-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Position Adjustments */
+.uab-position-inline {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.uab-position-top {
+    text-align: center;
+}
+
+.uab-position-bottom {
+    text-align: center;
+}
+
+.uab-position-left .uab-avatar {
+   
+}
+
+.uab-position-right .uab-avatar {
+    order: 2;
+}
