@@ -15,6 +15,24 @@ class UAB_Admin_Menu {
             'dashicons-admin-users',
             80
         );
+
+        add_submenu_page(
+            'ultimate-author-box',
+            'Settings',
+            'Settings',
+            'manage_options',
+            'ultimate-author-box',
+            [$this, 'settings_page']
+        );
+
+        add_submenu_page(
+            'ultimate-author-box',
+            'Elements Style',
+            'Elements Style',
+            'manage_options',
+            'uab-elements-style',
+            [$this, 'style_settings_page']
+        );
     }
 
     public function settings_page() {
@@ -22,6 +40,15 @@ class UAB_Admin_Menu {
         echo '<form method="post" action="options.php">';
         settings_fields('uab_settings_group');
         do_settings_sections('ultimate-author-box');
+        submit_button();
+        echo '</form></div>';
+    }
+
+    public function style_settings_page() {
+        echo '<div class="wrap"><h1>Elements Style</h1>';
+        echo '<form method="post" action="options.php">';
+        settings_fields('uab_style_settings_group');
+        do_settings_sections('uab-elements-style');
         submit_button();
         echo '</form></div>';
     }
