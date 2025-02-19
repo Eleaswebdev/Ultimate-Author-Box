@@ -12,6 +12,10 @@ class UAB_Loader {
         require_once UAB_PLUGIN_DIR . 'includes/Admin/class-admin-menu.php';
         require_once UAB_PLUGIN_DIR . 'includes/Admin/class-admin-settings.php';
 
+        // Load User Meta
+        require_once UAB_PLUGIN_DIR . 'includes/Meta/class-user-meta.php';
+        require_once UAB_PLUGIN_DIR . 'includes/Meta/class-user-update.php';
+
         // Load Frontend classes
         require_once UAB_PLUGIN_DIR . 'includes/Frontend/class-author-box.php';
 
@@ -23,5 +27,7 @@ class UAB_Loader {
         new UAB_Admin_Settings();
         new UAB_Author_Box();
         new UAB_Assets();
+        new UAB_User_Meta();
+        new UAB_User_Update();
     }
 }

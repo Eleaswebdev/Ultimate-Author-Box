@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    //alert('Hello World');
+   // alert('Hello World');
     $('.uab-color-picker').wpColorPicker();
 
     let $container = $('#uab-social-links-container');
@@ -18,5 +18,38 @@ jQuery(document).ready(function ($) {
 
     $container.on('click', '.remove-social-link', function() {
         $(this).parent().remove();
+    });
+
+    // User Profile image upload js
+    var mediaUploader;
+
+    $('#uab-upload-button').click(function(e) {
+        e.preventDefault();
+        if (mediaUploader) {
+            mediaUploader.open();
+            return;
+        }
+        mediaUploader = wp.media({
+            title: 'Choose Profile Image',
+            button: {
+                text: 'Select Image'
+            },
+            multiple: false
+        });
+
+        mediaUploader.on('select', function() {
+            var attachment = mediaUploader.state().get('selection').first().toJSON();
+            $('#uab_author_image').val(attachment.url);
+            $('#uab-image-preview').html('<img src="' + attachment.url + '" style="max-width: 150px; display: block;" />');
+            $('#uab-remove-button').show();
+        });
+
+        mediaUploader.open();
+    });
+
+    $('#uab-remove-button').click(function() {
+        $('#uab_author_image').val('');
+        $('#uab-image-preview').html('');
+        $(this).hide();
     });
 });

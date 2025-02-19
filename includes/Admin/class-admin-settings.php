@@ -101,6 +101,14 @@ class UAB_Admin_Settings {
         );
 
         add_settings_field(
+            'author_image_width',
+            'Author Image Width',
+            [$this, 'author_image_width_callback'],
+            'uab-elements-style',
+            'uab_style_settings'
+        );
+
+        add_settings_field(
             'padding',
             'Box Padding',
             [$this, 'padding_callback'],
@@ -214,6 +222,16 @@ class UAB_Admin_Settings {
         $bg_color = isset($options['background_color']) ? $options['background_color'] : '';
         echo '<input type="text" name="uab_style_settings[background_color]" value="' . esc_attr($bg_color) . '" class="uab-color-picker">';
     }
+
+    public function author_image_width_callback() {
+        $options = get_option('uab_style_settings');
+        $width = isset($options['author_image_width']) ? $options['author_image_width'] : 100; // Default width 100px
+        ?>
+        <input type="range" id="author_image_width" name="uab_style_settings[author_image_width]" min="50" max="200" value="<?php echo esc_attr($width); ?>" oninput="document.getElementById('author_image_width_value').innerText = this.value + 'px'">
+        <span id="author_image_width_value"><?php echo esc_attr($width); ?>px</span>
+        <?php
+    }
+    
 
     public function padding_callback() {
         $options = get_option('uab_style_settings', []);

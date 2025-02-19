@@ -37,7 +37,13 @@ class UAB_Author_Box {
         $author_id = $post->post_author;
         $author_name = get_the_author_meta('display_name', $author_id);
         $author_bio = get_the_author_meta('description', $author_id);
-        $author_avatar = get_avatar($author_id, 100);
+        // Get custom uploaded image or fallback to default avatar
+        $custom_author_image = get_the_author_meta('uab_author_image', $author_id);
+        if ($custom_author_image) {
+            $author_avatar = '<img src="' . esc_url($custom_author_image) . '" alt="' . esc_attr($author_name) . '" class="uab-custom-avatar">';
+        } else {
+            $author_avatar = get_avatar($author_id, 100);
+        }
         $social_links = isset($settings['social_links']) ? $settings['social_links'] : [];
         $position = isset($settings['author_position']) ? esc_attr($settings['author_position']) : 'inline';
 
