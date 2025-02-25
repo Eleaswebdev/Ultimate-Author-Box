@@ -1,38 +1,38 @@
 .uab-author-box {
-    padding: 15px;
-    border-radius: 5px;
-    margin-top: 20px;
+	padding: 15px;
+	border-radius: 5px;
+	margin-top: 20px;
 }
 
 .uab-avatar img {
-    height: auto;
+	height: auto;
 }
 
 .uab-flex {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
 }
 
 /* Position Adjustments */
 .uab-position-inline {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
 }
 
 .uab-position-top {
-    text-align: center;
+	text-align: center;
 }
 
 .uab-position-bottom {
-    text-align: center;
+	text-align: center;
 }
 
 .uab-position-left .uab-avatar {
-   
+
 }
 
 .uab-position-right .uab-avatar {
-    order: 2;
+	order: 2;
 }

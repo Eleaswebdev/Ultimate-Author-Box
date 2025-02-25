@@ -11,10 +11,10 @@
  * Text Domain: ultimate-author-box
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
-define('UAB_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('UAB_PLUGIN_URL', plugin_dir_url(__FILE__));
+define( 'UAB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'UAB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 // Load the loader class
 require_once UAB_PLUGIN_DIR . 'includes/class-loader.php';
@@ -23,5 +23,5 @@ require_once UAB_PLUGIN_DIR . 'includes/class-loader.php';
 UAB_Loader::init();
 
 // Register activation and deactivation hooks
-register_activation_hook(__FILE__, ['UAB_Activator', 'activate']);
-register_deactivation_hook(__FILE__, ['UAB_Deactivator', 'deactivate']);
+register_activation_hook( __FILE__, array( 'UAB_Activator', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'UAB_Deactivator', 'deactivate' ) );
